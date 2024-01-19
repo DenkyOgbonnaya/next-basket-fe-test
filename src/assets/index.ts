@@ -1,0 +1,6 @@
+export {default as PhoneIcon} from "./icons/phone.svg"
+export {default as EmailIcon} from "./icons/email.svg"
+export {default as FacebookIcon} from "./icons/facebook.svg"
+export {default as InstagramIcon} from "./icons/instagram.svg"
+export {default as TwitterIcon} from "./icons/twitter.svg"
+export {default as YoutubeIcon} from "./icons/youtube.svg"

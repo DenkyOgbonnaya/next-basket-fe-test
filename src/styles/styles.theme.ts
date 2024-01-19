@@ -30,6 +30,9 @@ const theme = createTheme({
     muted: {
       main: "#E77C40",
     },
+    light: {
+      main: "#FFF",
+    },
   },
 
   /* Type scale for typography fontsize is 1.125(Major seconds) approximated  */
@@ -42,8 +45,6 @@ const theme = createTheme({
     },
     "text-sm": {
       fontSize: "0.875rem", //14px
-      lineHeight: "1.5rem",
-      letterSpacing: "0.0125rem",
     },
     "text-base": {
       fontSize: "1rem", //16px
@@ -53,13 +54,9 @@ const theme = createTheme({
     },
     "text-xl": {
       fontSize: "1.25rem", //20.25px
-      lineHeight: "1.875rem",
-      letterSpacing: "0.0125rem",
     },
     "text-2xl": {
       fontSize: "1.5rem", //22.78px
-      lineHeight: "2rem",
-      letterSpacing: "0.00625rem",
     },
     "text-3xl": {
       fontSize: "1.602rem", // 25.63p

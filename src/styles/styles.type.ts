@@ -54,12 +54,14 @@ declare module "@mui/material/styles" {
   
   interface Palette {
     muted: Palette['primary'];
-    background: Palette["background"]
+    background: Palette["background"],
+    light: Palette['primary'];
   }
 
   interface PaletteOptions {
     muted?: PaletteOptions['primary'];
     background?: PaletteOptions["background"]
+    light?: PaletteOptions['primary'];
   }
   
   /*=====  End of Color pallets  ======*/
