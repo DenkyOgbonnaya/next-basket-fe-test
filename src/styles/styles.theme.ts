@@ -28,7 +28,7 @@ const theme = createTheme({
       paper: "#FAFAFA",
     },
     muted: {
-      main: "#E77C40",
+      main: "#BDBDBD",
     },
     light: {
       main: "#FFF",
