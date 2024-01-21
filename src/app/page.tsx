@@ -3,8 +3,10 @@ import { HeaderBar, NavBar } from "@/components";
 import { IBlog } from "@/types/blog.type";
 import { Box, Container, Stack } from "@mui/system";
 import BlogList from "./_components/blogList";
+import CallToAction from "./_components/callToAction";
 import ClientSuccess from "./_components/clientSuccess";
 import FeaturedProducts from "./_components/featuredProducts";
+import Footer from "./_components/footer";
 import HowItWorks from "./_components/howItWorks";
 import Posts from "./_components/posts";
 
@@ -90,6 +92,17 @@ export default function Home() {
       >
         <ClientSuccess />
       </Box>
+      <Box
+        component="section"
+        px={{ mobile: "2.5rem", laptop: "1rem" }}
+        maxWidth={{ mobile: "100%", laptop: "75%" }}
+        py={{ mobile: "2rem", laptop: "5rem" }}
+        alignSelf="center"
+        bgcolor="green"
+      >
+        <CallToAction />
+      </Box>
+      <Footer />
     </Container>
   );
 }

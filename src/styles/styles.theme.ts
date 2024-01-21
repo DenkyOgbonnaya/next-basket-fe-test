@@ -25,7 +25,7 @@ const theme = createTheme({
     },
     background: {
       default: "#FFFFFF",
-      paper: "#FFFFFF",
+      paper: "#FAFAFA",
     },
     muted: {
       main: "#BDBDBD",
