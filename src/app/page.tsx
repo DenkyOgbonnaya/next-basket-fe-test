@@ -4,6 +4,7 @@ import { IBlog } from "@/types/blog.type";
 import { Box, Container, Stack } from "@mui/system";
 import BlogList from "./_components/blogList";
 import FeaturedProducts from "./_components/featuredProducts";
+import HowItWorks from "./_components/howItWorks";
 
 export default function Home() {
   const blogs: IBlog[] = [
@@ -59,6 +60,15 @@ export default function Home() {
         alignSelf="center"
       >
         <FeaturedProducts />
+      </Box>
+      <Box
+          component="section"
+          px={{ mobile: "2.5rem", laptop: "1rem" }}
+          py={{ mobile: "2rem", laptop: "5rem" }}
+          maxWidth={{mobile:"100%", laptop:"75%"}}
+          alignSelf="center"
+      >
+        <HowItWorks />
       </Box>
     </Container>
   );

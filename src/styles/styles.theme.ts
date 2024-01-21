@@ -24,8 +24,8 @@ const theme = createTheme({
       secondary: "#737373",
     },
     background: {
-      default: "#FAFAFA",
-      paper: "#FAFAFA",
+      default: "#FFFFFF",
+      paper: "#FFFFFF",
     },
     muted: {
       main: "#BDBDBD",
