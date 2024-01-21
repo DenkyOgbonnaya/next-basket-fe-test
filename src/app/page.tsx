@@ -3,6 +3,7 @@ import { HeaderBar, NavBar } from "@/components";
 import { IBlog } from "@/types/blog.type";
 import { Box, Container, Stack } from "@mui/system";
 import BlogList from "./_components/blogList";
+import ClientSuccess from "./_components/clientSuccess";
 import FeaturedProducts from "./_components/featuredProducts";
 import HowItWorks from "./_components/howItWorks";
 import Posts from "./_components/posts";
@@ -34,8 +35,8 @@ export default function Home() {
     <Container
       maxWidth="xl"
       sx={{
-        display:"flex",
-        flexDirection:'column',
+        display: "flex",
+        flexDirection: "column",
         backgroundColor: "background.paper",
         height: "100dvh",
         padding: "0px",
@@ -57,28 +58,37 @@ export default function Home() {
         component="section"
         px={{ mobile: "2.5rem", laptop: "1rem" }}
         py={{ mobile: "2rem", laptop: "5rem" }}
-        maxWidth={{mobile:"100%", laptop:"75%"}}
+        maxWidth={{ mobile: "100%", laptop: "75%" }}
         alignSelf="center"
       >
         <FeaturedProducts />
       </Box>
       <Box
-          component="section"
-          px={{ mobile: "2.5rem", laptop: "1rem" }}
-          py={{ mobile: "2rem", laptop: "5rem" }}
-          maxWidth={{mobile:"100%", laptop:"75%"}}
-          alignSelf="center"
+        component="section"
+        px={{ mobile: "2.5rem", laptop: "1rem" }}
+        py={{ mobile: "2rem", laptop: "5rem" }}
+        maxWidth={{ mobile: "100%", laptop: "75%" }}
+        alignSelf="center"
       >
         <HowItWorks />
       </Box>
       <Box
-          component="section"
-          px={{ mobile: "2.5rem", laptop: "1rem" }}
-          py={{ mobile: "2rem", laptop: "5rem" }}
-          maxWidth={{mobile:"100%", laptop:"75%"}}
-          alignSelf="center"
+        component="section"
+        px={{ mobile: "2.5rem", laptop: "1rem" }}
+        py={{ mobile: "2rem", laptop: "5rem" }}
+        maxWidth={{ mobile: "100%", laptop: "75%" }}
+        alignSelf="center"
       >
         <Posts />
+      </Box>
+      <Box
+        component="section"
+        px={{ mobile: "2.5rem", laptop: "1rem" }}
+        py={{ mobile: "2rem", laptop: "5rem" }}
+        maxWidth={{ mobile: "100%", laptop: "75%" }}
+        alignSelf="center"
+      >
+        <ClientSuccess />
       </Box>
     </Container>
   );
