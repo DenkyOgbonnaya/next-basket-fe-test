@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import { Stack } from "@mui/material";
 import { IProduct } from "@/types/product.type";
 import { Amount } from "@/components";
+import { truncateWords } from "@/utills/helper";
 
 interface Props {
   product: IProduct;
@@ -18,7 +19,16 @@ export default function Product({ product, onClick }: Props) {
   return (
     <Card
       component="article"
-      sx={{ width: { mobile: "100%", laptop: "100%" }, boxShadow: "none", bgcolor:"background.default" }}
+      sx={{
+        width: { mobile: "100%", laptop: "100%" },
+        boxShadow: "none",
+        bgcolor: "background.default",
+        cursor: 'pointer',
+        transition: "opacity 0.3s ease-in-out",
+          "&:hover": {
+            opacity: 0.8,
+          },
+      }}
       onClick={handleProductClick}
     >
       <CardMedia
@@ -44,7 +54,7 @@ export default function Product({ product, onClick }: Props) {
           color="text.primary"
           component="div"
         >
-          {product.title}
+          {truncateWords(product.title, 15)}
         </Typography>
         <Typography
           variant="text-sm"
@@ -53,7 +63,7 @@ export default function Product({ product, onClick }: Props) {
           letterSpacing="0.00625rem"
           color="text.secondary"
         >
-          {product.category}
+         {truncateWords(product.category, 15)}
         </Typography>
         <Stack
           direction="row"
