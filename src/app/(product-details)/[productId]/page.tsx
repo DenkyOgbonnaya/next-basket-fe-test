@@ -8,6 +8,8 @@ import NavBar from "../_components/navBar";
 import { ChevronRight, RightChevron } from "@/assets";
 import ProductDescription from "../_components/productDescription";
 import ProjectInformation from "../_components/projectInformation";
+import Partners from "../_components/partners";
+import BestSellerProducts from "../_components/bestSellerProducts";
 
 export default function ProductDetails() {
   return (
@@ -16,10 +18,9 @@ export default function ProductDetails() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "background.paper",
+        backgroundColor: "background.default",
         minHeight: "100dvh",
         padding: "0px",
-        gap: "1.5rem",
       }}
     >
       <Stack useFlexGap gap="0.75rem">
@@ -28,12 +29,12 @@ export default function ProductDetails() {
       </Stack>
       <Container
         maxWidth={false}
-        sx={{ maxWidth: { mobile: "100%", laptop: "80%" } }}
+        sx={{ maxWidth: { mobile: "100%", laptop: "80%" }, display:"flex", flexDirection:"column" }}
       >
         <Breadcrumbs
           aria-label="breadcrumb"
           separator={<RightChevron color="#BDBDBD" />}
-          
+          sx={{py:"1.5rem", alignSelf:{mobile:"center", laptop:"flex-start"}}}
         >
           <Link
             underline="hover"
@@ -61,10 +62,12 @@ export default function ProductDetails() {
           </Link>
         </Breadcrumbs>
 
-        <ProductDescription />
-
+       
       </Container>
+      <ProductDescription />
       <ProjectInformation />
+      <BestSellerProducts />
+      <Partners />
       <Footer />
     </Container>
   );

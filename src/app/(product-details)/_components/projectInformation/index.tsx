@@ -13,7 +13,7 @@ export default function ProjectInformation() {
     setValue(newValue);
   };
   return (
-    <Box bgcolor="background.default">
+    <Box bgcolor="background.default" display={{mobile:"none", laptop:"block"}}>
       <Container
         maxWidth={false}
         sx={{ maxWidth: { mobile: "100%", laptop: "80%" } }}
@@ -183,7 +183,7 @@ export default function ProjectInformation() {
               flex={1}
               width={{ mobile: "350px", laptop: "38%" }}
             >
-              <Image src="/images/card-cover-5.png" fill alt="" />
+              <Image src="/images/product-cover.png" fill alt="" />
             </Box>
           </Box>
         </TabPanel>

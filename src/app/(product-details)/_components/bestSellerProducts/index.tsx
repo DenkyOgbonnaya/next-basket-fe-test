@@ -1,13 +1,9 @@
+import ProductList from "@/app/_components/productList";
 import { IProduct } from "@/types/product.type";
 import { Typography } from "@mui/material";
-import { Box, Stack } from "@mui/system";
-import Button from "@mui/material/Button";
-import Product from "../product";
-import ProductList from "../productList";
-import { useRouter } from "next/navigation";
+import { Box, Stack, Container } from "@mui/system";
 
-export default function FeaturedProducts() {
-  const router = useRouter();
+export default function BestSellerProducts() {
   const products: IProduct[] = [
     {
       id: 1,
@@ -102,56 +98,40 @@ export default function FeaturedProducts() {
     },
   ];
 
-  const handleProductClick = (product: IProduct) => {
-    router.push(`/${product.id}`);
-  };
+  const handleProductClick = (product: IProduct) => {};
   return (
-    <Box display="flex" flexDirection="column" alignItems="center" gap="3.5rem">
-      <Stack useFlexGap gap="0.62rem" textAlign="center">
-        <Typography
-          variant="text-xl"
-          color="text.secondary"
-          fontWeight="400"
-          lineHeight="1.875rem"
-          letterSpacing="0.0125rem"
-        >
-          Featured Products
-        </Typography>
-        <Typography
-          variant="text-xl"
-          color="text.secondary"
-          fontWeight="700"
-          lineHeight="2rem"
-          letterSpacing="0.00625rem"
-          textTransform="uppercase"
-        >
-          BESTSELLER PRODUCTS
-        </Typography>
-        <Typography
-          variant="text-sm"
-          color="text.secondary"
-          fontWeight="400"
-          lineHeight="1.25rem"
-          letterSpacing="0.0125rem"
-        >
-          Problems trying to resolve the conflict between
-        </Typography>
-      </Stack>
-      <ProductList products={products} onClick={handleProductClick} />
-      <Button
-        variant="outlined"
+    <Box component="section" bgcolor="background.paper" py="3rem">
+      <Container
+        maxWidth={false}
         sx={{
-          borderRadius: "0.3125rem",
-          paddingX: "2.5rem",
-          paddingY: "0.94rem",
-          fontSize: "test-sm",
-          fontWeight: "700",
-          lineHeight: "1.375rem",
-          letterSpacing: "0.0125rem",
+          maxWidth: {
+            mobile: "100%",
+            laptop: "80%",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.5rem",
+          },
         }}
       >
-        LOAD MORE PRODUCTS
-      </Button>
+        <Stack
+          useFlexGap
+          gap="0.62rem"
+          paddingBottom="1rem"
+          borderBottom="1px solid #ECECEC"
+        >
+          <Typography
+            variant="text-xl"
+            color="text.secondary"
+            fontWeight="700"
+            lineHeight="2rem"
+            letterSpacing="0.00625rem"
+            textTransform="uppercase"
+          >
+            BESTSELLER PRODUCTS
+          </Typography>
+        </Stack>
+        <ProductList products={products} onClick={handleProductClick} />
+      </Container>
     </Box>
   );
 }

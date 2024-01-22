@@ -9,10 +9,18 @@ import { Amount } from "@/components";
 
 interface Props {
   product: IProduct;
+  onClick: (product: IProduct) => void;
 }
-export default function Product({ product }: Props) {
+export default function Product({ product, onClick }: Props) {
+  const handleProductClick = () => {
+    onClick(product);
+  };
   return (
-    <Card sx={{ width: {mobile:"100%", laptop:"100%"}, boxShadow: "none" }}>
+    <Card
+      component="article"
+      sx={{ width: { mobile: "100%", laptop: "100%" }, boxShadow: "none" }}
+      onClick={handleProductClick}
+    >
       <CardMedia
         sx={{ height: "14.875rem" }}
         image={product.thumbnail}
@@ -62,7 +70,7 @@ export default function Product({ product }: Props) {
             letterSpacing="0.00625rem"
             color="muted.main"
           >
-             <Amount amount={product.price} />
+            <Amount amount={product.price} />
           </Typography>
           <Typography
             variant="text-base"
