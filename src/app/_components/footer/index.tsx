@@ -96,6 +96,7 @@ export default function Footer() {
             </Typography>
             {companyInfoLinks.map((link) => (
               <MuLink
+              key={link.title}
                 variant="text-sm"
                 // href={link.link}
                 component="span"
@@ -127,6 +128,7 @@ export default function Footer() {
 
             {companyInfoLinks.map((link) => (
               <MuLink
+              key={link.title}
                 variant="text-sm"
                 // href={link.link}
                 component="span"
@@ -159,6 +161,7 @@ export default function Footer() {
 
             {featuresLinks.map((link) => (
               <MuLink
+              key={link.title}
                 variant="text-sm"
                 // href={link.link}
                 component="span"
@@ -191,6 +194,7 @@ export default function Footer() {
             {resourceLinks.map((link) => (
               <MuLink
                 variant="text-sm"
+                key={link.title}
                 // href={link.link}
                 component="span"
                 letterSpacing="0.00625rem"

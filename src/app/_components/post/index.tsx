@@ -151,7 +151,7 @@ export default function Post({coverImage}:Props) {
           letterSpacing=" 0.0125rem"
           color="text.primary"
         >
-          Loudest à la Madison #1 (L'integral)
+          Loudest à la Madison #1 (L&apos;integral)
         </Typography>
         <Typography
           variant="text-sm"
@@ -161,7 +161,7 @@ export default function Post({coverImage}:Props) {
           color="text.secondary"
           sx={{ fontSize: "text-xs" }}
         >
-          We focus on ergonomics and meeting you where you work. It's only a
+          We focus on ergonomics and meeting you where you work. It&apos;s only a
           keystroke away.
         </Typography>
         <Box
