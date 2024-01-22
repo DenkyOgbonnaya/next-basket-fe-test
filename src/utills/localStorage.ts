@@ -5,17 +5,27 @@ export const setCart = (cart: CartItem[]) => {
 };
 
 export const getCart = ():CartItem[] => {
-   const cartJson = localStorage.cart;
+  if(typeof window != "undefined") {
+    const cartJson = localStorage.cart;
 
-   return cartJson ? JSON.parse(cartJson) : []
+    return cartJson ? JSON.parse(cartJson) : []
+  }
+  
+  return []
   };
 
   export const setWhichlist = (list: CartItem[]) => {
-    localStorage.wishlist = JSON.stringify(list);
+    if(typeof window != "undefined") {
+      localStorage.wishlist = JSON.stringify(list);
+    }
+    
   };
   
   export const getWhichlist = ():CartItem[] => {
-     const listJson = localStorage.wishlist;
+    if(typeof window != "undefined") {
+      const listJson = localStorage.wishlist;
   
-     return listJson ? JSON.parse(listJson) : []
+      return listJson ? JSON.parse(listJson) : []
+    }
+   return []
     };
