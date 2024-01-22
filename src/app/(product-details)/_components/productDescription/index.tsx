@@ -13,19 +13,29 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { Button, IconButton, Typography } from "@mui/material";
 import { Box, Stack, Container } from "@mui/system";
 import Image from "next/image";
+import Snackbar, { SnackbarOrigin } from "@mui/material/Snackbar";
 import { useRef, useState } from "react";
 import { IProduct } from "@/types/product.type";
+import { CartItem } from "@/types/cart.type";
+import { useStoreDispatch } from "@/hooks/useStoreDispatch";
+import { addItem } from "@/store/slice/cart.slice";
+import { useStoreSelector } from "@/hooks/useStoreSelector";
+import { RootState } from "@/store";
 
 interface Props {
-  product:IProduct
+  product: IProduct;
 }
-export default function ProductDescription({product}:Props) {
+export default function ProductDescription({ product }: Props) {
   const [selectedColor, setSelectedColor] = useState("");
+  const [showCartSnack, setShowCartSnack] = useState(false);
   const [active, setActive] = useState(0);
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const scrollAmount = 500;
+  const dispatch = useStoreDispatch();
+  const { cart } = useStoreSelector((state: RootState) => state.cart);
 
-  
+  const isItemInCart = cart.find((item) => item.productId == product.id);
+
   const colorVariations = [
     {
       name: "Blue",
@@ -66,6 +76,24 @@ export default function ProductDescription({product}:Props) {
     if (active > 0) setActive((a) => a - 1);
   };
 
+  const toggleCartSnack = () => {
+    setShowCartSnack(!showCartSnack);
+  };
+
+  const handleAddToCart = (product: IProduct) => {
+    const item: CartItem = {
+      productId: product.id,
+      qty: 1,
+      price: product.price,
+      title: product.title,
+      thumbnail: product.thumbnail,
+      stock: product.stock,
+      category: product.category,
+      discount: product.discountPercentage,
+    };
+    dispatch(addItem(item));
+    toggleCartSnack();
+  };
   return (
     <Box
       component="article"
@@ -112,7 +140,7 @@ export default function ProductDescription({product}:Props) {
                 position="relative"
                 height={{ mobile: "15rem", laptop: "28.125rem" }}
                 minWidth={{ mobile: "350px", laptop: "100%" }}
-                sx={{objectFit:"cover"}}
+                sx={{ objectFit: "cover" }}
               >
                 <Image src={img} fill alt="" style={{ objectFit: "cover" }} />
               </Box>
@@ -144,7 +172,7 @@ export default function ProductDescription({product}:Props) {
                   transition: "all",
                   transitionDuration: "0.5s",
                   transitionTimingFunction: "ease-in-out",
-                  objectFit:"cover"
+                  objectFit: "cover",
                 }}
               >
                 <Image src={img} fill alt="" style={{ objectFit: "cover" }} />
@@ -160,7 +188,7 @@ export default function ProductDescription({product}:Props) {
           gap="0.75rem"
           paddingX="1.5rem"
           paddingY="0.6rem"
-          height={{mobile:"fit-content", laptop:"28.125rem"}}
+          height={{ mobile: "fit-content", laptop: "28.125rem" }}
         >
           <Typography
             variant="text-xl"
@@ -217,7 +245,7 @@ export default function ProductDescription({product}:Props) {
               letterSpacing="0.0125rem"
               color="primary"
             >
-            {product.stock > 0 ? "In Stock" : "Out of Stock"}
+              {product.stock > 0 ? "In Stock" : "Out of Stock"}
             </Typography>
           </Stack>
           <Typography
@@ -227,7 +255,7 @@ export default function ProductDescription({product}:Props) {
             letterSpacing="0.00625rem"
             color="text.secondary"
             component="p"
-            display={{mobile:"block", laptop:"none"}}
+            display={{ mobile: "block", laptop: "none" }}
           >
             {product.description}
           </Typography>
@@ -293,6 +321,8 @@ export default function ProductDescription({product}:Props) {
                 <LoveIcon />
               </IconButton>
               <IconButton
+                onClick={() => handleAddToCart(product)}
+                disabled={isItemInCart ? true : false}
                 sx={{
                   width: "2.5rem",
                   height: "2.5rem",
@@ -324,6 +354,17 @@ export default function ProductDescription({product}:Props) {
               </IconButton>
             </Stack>
           </Box>
+          <Snackbar
+            open={showCartSnack}
+            autoHideDuration={6000}
+            onClose={toggleCartSnack}
+            message="Item added to cart"
+            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+            sx={{
+              bgcolor: "red",
+              maxWidth: "200px",
+            }}
+          />
         </Box>
       </Container>
     </Box>
