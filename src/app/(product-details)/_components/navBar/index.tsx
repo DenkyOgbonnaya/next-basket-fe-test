@@ -216,8 +216,14 @@ export default function NavBar() {
               </Link>
             </Stack>
 
+          
+            <Box display={{ mobile: "none", laptop: "block" }}>
             <SearchBar />
+            </Box>
+            <Box display={{ mobile: "none", laptop: "block" }}>
             <CartIndicator />
+            </Box>
+           
             <Box display={{ mobile: "none", laptop: "block" }}>
               <SavedIndicator />
             </Box>
@@ -244,6 +250,7 @@ export default function NavBar() {
           MOBILE MENU
 
           */}
+
       <Stack
         useFlexGap
         direction="column"
@@ -252,12 +259,14 @@ export default function NavBar() {
         display={{ mobile: "flex", laptop: "none" }}
         alignItems="center"
         position="absolute"
-        bgcolor="background.paper"
-        top={menuExpanded ? 150 : -500}
+        bgcolor="background.default"
+        top={menuExpanded ? 50 : -600}
         margin="0 auto"
-        right="50%"
-        left="50%"
-        zIndex={10}
+        right="0"
+        left="0"
+        zIndex={50}
+        paddingTop="3rem"
+        paddingBottom="2rem"
         sx={{
           transition: "all",
           transitionDuration: "1s",
@@ -272,12 +281,36 @@ export default function NavBar() {
             letterSpacing="0.0125rem"
             lineHeight="2.8125rem"
             color="text.secondary"
-            fontWeight={activeLink(pathName, menu.route) ? "400" : "600"}
+            fontWeight={activeLink(pathName, menu.route) ? "400" : "400"}
             sx={{ textDecoration: "none" }}
           >
             {menu.title}
           </Link>
         ))}
+        <Stack
+          direction="row"
+          useFlexGap
+          gap="0.31rem"
+          minWidth="fit-content"
+        >
+          <UserIcon />
+          <Link
+            href=""
+            variant="text-3xl"
+            letterSpacing="0.0125rem"
+            lineHeight="1.5rem"
+            color="primary"
+            fontWeight="400"
+            alignItems="center"
+            sx={{ textDecoration: "none" }}
+          >
+            Login / Register
+          </Link>
+        </Stack>
+        <SearchBar />
+        <CartIndicator />
+
+        <SavedIndicator />
       </Stack>
     </Box>
   );

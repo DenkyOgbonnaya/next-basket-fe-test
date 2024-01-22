@@ -293,6 +293,7 @@ export default function Footer() {
             lineHeight="1.5rem"
             color="text.secondary"
             fontWeight="700"
+            textAlign={{mobile:"center", laptop:"left"}}
           >
             Made With Love By Finland All Right Reserved
           </Typography>
