@@ -9,3 +9,13 @@ export const getCart = ():CartItem[] => {
 
    return cartJson ? JSON.parse(cartJson) : []
   };
+
+  export const setWhichlist = (list: CartItem[]) => {
+    localStorage.wishlist = JSON.stringify(list);
+  };
+  
+  export const getWhichlist = ():CartItem[] => {
+     const listJson = localStorage.wishlist;
+  
+     return listJson ? JSON.parse(listJson) : []
+    };

@@ -2,11 +2,13 @@ import { productsApi } from "@/services/product.service";
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query/react";
 import cartSlice from "./slice/cart.slice";
+import whishlistSlice from "./slice/whishlist.slice";
 
 export const store = configureStore({
   reducer: {
     [productsApi.reducerPath]: productsApi.reducer,
-    cart: cartSlice
+    cart: cartSlice,
+    whichlist: whishlistSlice
   },
   devTools: process.env.NODE_ENV !== "production",
   // Adding the api middleware enables caching, invalidation, polling,

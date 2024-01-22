@@ -21,6 +21,7 @@ import { useStoreDispatch } from "@/hooks/useStoreDispatch";
 import { addItem } from "@/store/slice/cart.slice";
 import { useStoreSelector } from "@/hooks/useStoreSelector";
 import { RootState } from "@/store";
+import { saveItem } from "@/store/slice/whishlist.slice";
 
 interface Props {
   product: IProduct;
@@ -28,13 +29,16 @@ interface Props {
 export default function ProductDescription({ product }: Props) {
   const [selectedColor, setSelectedColor] = useState("");
   const [showCartSnack, setShowCartSnack] = useState(false);
+  const [showWishlistSnack, setShowWishlistSnack] = useState(false);
   const [active, setActive] = useState(0);
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const scrollAmount = 500;
   const dispatch = useStoreDispatch();
   const { cart } = useStoreSelector((state: RootState) => state.cart);
+  const { whichlist } = useStoreSelector((state: RootState) => state.whichlist);
 
   const isItemInCart = cart.find((item) => item.productId == product.id);
+  const isItemListed = whichlist.find((item) => item.productId == product.id);
 
   const colorVariations = [
     {
@@ -79,6 +83,9 @@ export default function ProductDescription({ product }: Props) {
   const toggleCartSnack = () => {
     setShowCartSnack(!showCartSnack);
   };
+  const toggleWishlistSnack = () => {
+    setShowWishlistSnack(!showWishlistSnack);
+  };
 
   const handleAddToCart = (product: IProduct) => {
     const item: CartItem = {
@@ -93,6 +100,21 @@ export default function ProductDescription({ product }: Props) {
     };
     dispatch(addItem(item));
     toggleCartSnack();
+  };
+
+  const handleAddWishlist = (product: IProduct) => {
+    const item: CartItem = {
+      productId: product.id,
+      qty: 1,
+      price: product.price,
+      title: product.title,
+      thumbnail: product.thumbnail,
+      stock: product.stock,
+      category: product.category,
+      discount: product.discountPercentage,
+    };
+    dispatch(saveItem(item));
+    toggleWishlistSnack();
   };
   return (
     <Box
@@ -306,6 +328,8 @@ export default function ProductDescription({ product }: Props) {
                 Select Options
               </Button>
               <IconButton
+              onClick={() => handleAddWishlist(product)}
+              disabled={isItemListed ? true : false}
                 sx={{
                   width: "2.5rem",
                   height: "2.5rem",
@@ -361,7 +385,18 @@ export default function ProductDescription({ product }: Props) {
             message="Item added to cart"
             anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
             sx={{
-              bgcolor: "red",
+              bgcolor: "#ffffff",
+              maxWidth: "200px",
+            }}
+          />
+          <Snackbar
+            open={showWishlistSnack}
+            autoHideDuration={6000}
+            onClose={toggleWishlistSnack}
+            message="Item saved"
+            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+            sx={{
+              bgcolor: "#ffffff",
               maxWidth: "200px",
             }}
           />

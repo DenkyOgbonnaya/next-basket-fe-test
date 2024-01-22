@@ -1,6 +1,6 @@
 import { CartIcon } from "@/assets";
-import Modal from "@mui/material/Modal";
-import { IconButton, Typography, Button, Portal } from "@mui/material";
+import { IconButton, Typography, Button, Modal } from "@mui/material";
+import { Portal } from "@mui/base";
 import { Box, Stack } from "@mui/system";
 import { useStoreSelector } from "@/hooks/useStoreSelector";
 import { RootState } from "@/store";
@@ -23,9 +23,7 @@ export default function CartIndicator() {
     reason: "escapeKeyDown" | "backdropClick"
   ) => {
     if (reason === "backdropClick") {
-      
     }
-   
   };
 
   return (
@@ -55,13 +53,15 @@ export default function CartIndicator() {
         >
           {itemsCount}
         </Typography>
-        <Portal>
+     
+      </Stack>
+      <Portal>
           <Modal
             open={showCart}
-            onClose={handleCloseCart}
+            // onClose={handleCloseCart}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
-            sx={{ maxWidth: "700px" }}
+            sx={{ maxWidth: "700px", overflow: "scroll" }}
           >
             <Box bgcolor="background.default" p="2rem">
               <Box
@@ -83,9 +83,7 @@ export default function CartIndicator() {
                 <Button onClick={toggleCart}>X</Button>
               </Box>
 
-              <Cart />
-
-              <Box mt="2rem">
+              {itemsCount < 1 ? (
                 <Typography
                   variant="text-base"
                   letterSpacing="0.0125rem"
@@ -93,13 +91,28 @@ export default function CartIndicator() {
                   fontWeight="700"
                   color="text.primary"
                 >
-                  Sum Total = <Amount amount={sumTotal} />
+                  No items in Cart
                 </Typography>
-              </Box>
+              ) : (
+                <>
+                  <Cart />
+
+                  <Box mt="2rem">
+                    <Typography
+                      variant="text-base"
+                      letterSpacing="0.0125rem"
+                      lineHeight="1rem"
+                      fontWeight="700"
+                      color="text.primary"
+                    >
+                      Sum Total = <Amount amount={sumTotal} />
+                    </Typography>
+                  </Box>
+                </>
+              )}
             </Box>
           </Modal>
         </Portal>
-      </Stack>
     </>
   );
 }
