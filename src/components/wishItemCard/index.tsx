@@ -1,5 +1,6 @@
 import { Caution, LoveIcon } from "@/assets";
 import { CartItem } from "@/types/cart.type";
+import { truncateWords } from "@/utills/helper";
 import { Typography, IconButton } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import Image from "next/image";
@@ -39,7 +40,7 @@ export default function WishItemCard({ item, onToggle }: Props) {
               lineHeight="1.5rem"
               letterSpacing="0.0125rem"
             >
-              {item.title}
+              { truncateWords(item.title, 15)}
             </Typography>
             <Typography
               variant="text-xs"
@@ -75,7 +76,7 @@ export default function WishItemCard({ item, onToggle }: Props) {
           >
             <Amount amount={item.price} />
           </Typography>
-          <Stack direction="row" alignItems="center" useFlexGap gap="0.31rem">
+          <Stack  direction={{ mobile: "column", laptop: "row" }} alignItems="center" useFlexGap gap="0.31rem">
             <Typography
               variant="text-sm"
               color="muted.main"

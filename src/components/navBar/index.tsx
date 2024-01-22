@@ -120,17 +120,7 @@ export default function NavBar() {
                   Shop
                 </Typography>
               </Button>
-              <Menu
-                id="basic-menu"
-                // anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                  "aria-labelledby": "basic-button",
-                }}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-              </Menu>
+              
 
               <Link
                 href=""
@@ -236,29 +226,32 @@ export default function NavBar() {
 
           */}
       <Stack
-        useFlexGap
-        direction="column"
-        component="nav"
-        gap="1.88rem"
-        display={{ mobile: "flex", laptop: "none" }}
-        alignItems="center"
-        position="absolute"
-        bgcolor="background.paper"
-        top={menuExpanded ? 150 : -500}
-        margin="0 auto"
-        right="50%"
-        left="50%"
-        sx={{
-          transition: "all",
-          transitionDuration: "1s",
-          transitionTimingFunction: "ease-in-out",
-        }}
+         useFlexGap
+         direction="column"
+         component="nav"
+         gap="1.88rem"
+         display={{ mobile: "flex", laptop: "none" }}
+         alignItems="center"
+         position="absolute"
+         bgcolor="background.default"
+         top={menuExpanded ? 50 : -600}
+         margin="0 auto"
+         right="0"
+         left="0"
+         zIndex={50}
+         paddingTop="3rem"
+         paddingBottom="2rem"
+         sx={{
+           transition: "all",
+           transitionDuration: "1s",
+           transitionTimingFunction: "ease-in-out",
+         }}
       >
         {mobileMenus.map((menu) => (
           <Link
             key={menu.title}
             href={menu.route}
-            variant="text-4xl"
+            variant="text-xl"
             letterSpacing="0.0125rem"
             lineHeight="2.8125rem"
             color="text.secondary"

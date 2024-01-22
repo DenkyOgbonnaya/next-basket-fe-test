@@ -15,8 +15,8 @@ export default function WishList() {
   };
 
   return (
-    <Box>
-      <Box>
+  
+      <Box display="flex" flexDirection="column" gap="0.62rem">
         {whichlist.map((item) => (
           <WishItemCard
             item={item}
@@ -24,7 +24,7 @@ export default function WishList() {
             onToggle={handleToggle}
           />
         ))}
-      </Box>
+   
     </Box>
   );
 }

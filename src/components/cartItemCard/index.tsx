@@ -1,5 +1,6 @@
 import { Caution, Minus, Plus, Trash } from "@/assets";
 import { CartItem } from "@/types/cart.type";
+import { truncateWords } from "@/utills/helper";
 import {
   Card,
   CardActions,
@@ -24,14 +25,12 @@ export default function CartItemCard({
   onRemove,
   onIncQty,
 }: Props) {
-
-  const getOriginalPrice = (item:CartItem) => {
-    const percentDiscount = Number(item.discount)
+  const getOriginalPrice = (item: CartItem) => {
+    const percentDiscount = Number(item.discount);
     const priceDiscount = percentDiscount / 100;
 
-    return item.price / (1-priceDiscount)
-
-  }
+    return item.price / (1 - priceDiscount);
+  };
   return (
     <Box
       sx={{
@@ -44,7 +43,11 @@ export default function CartItemCard({
     >
       <Box display="flex" justifyContent="space-between">
         <Stack direction="row" useFlexGap gap="0.62rem">
-          <Box position="relative" width="80px" height="80px">
+          <Box
+            position="relative"
+            width={{ mobile: "50px", laptop: "80px" }}
+            height={{ mobile: "50px", laptop: "80px" }}
+          >
             <Image src={item.thumbnail} alt={item.title} fill />
           </Box>
           <Stack>
@@ -55,7 +58,7 @@ export default function CartItemCard({
               lineHeight="1.5rem"
               letterSpacing="0.0125rem"
             >
-              {item.title}
+              {truncateWords(item.title, 15)}
             </Typography>
             <Typography
               variant="text-xs"
@@ -91,7 +94,12 @@ export default function CartItemCard({
           >
             <Amount amount={item.price} />
           </Typography>
-          <Stack direction="row" alignItems="center" useFlexGap gap="0.31rem">
+          <Stack
+            direction={{ mobile: "column", laptop: "row" }}
+            alignItems="center"
+            useFlexGap
+            gap="0.31rem"
+          >
             <Typography
               variant="text-sm"
               color="muted.main"
@@ -125,7 +133,9 @@ export default function CartItemCard({
           </Stack>
         </Stack>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between", mt:"1rem" }}>
+      <Box
+        sx={{ display: "flex", justifyContent: "space-between", mt: "1rem" }}
+      >
         <Button
           color="primary"
           sx={{ fontSize: "0.75rem", color: "primary.main" }}

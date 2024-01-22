@@ -257,6 +257,7 @@ export default function Footer() {
                   textTransform: "capitalize",
                   borderTopLeftRadius: "0px",
                   borderBottomLeftRadius: "0px",
+                  boxShadow: 'none'
                 }}
               >
                 Subscribe

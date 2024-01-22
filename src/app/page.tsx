@@ -52,7 +52,7 @@ export default function Home() {
       </Stack>
       <Box
         component="section"
-        px={{ mobile: "2.5rem", laptop: "9.19rem" }}
+        px={{ mobile: "1rem", laptop: "9.19rem" }}
         py={{ mobile: "2rem", laptop: "5rem" }}
       >
         <Container
@@ -64,7 +64,7 @@ export default function Home() {
       </Box>
       <Box
         component="section"
-        px={{ mobile: "2.5rem", laptop: "1rem" }}
+        px={{ mobile: "1rem", laptop: "1rem" }}
         py={{ mobile: "2rem", laptop: "5rem" }}
         alignSelf="center"
       >
@@ -77,7 +77,7 @@ export default function Home() {
       </Box>
       <Box
         component="section"
-        px={{ mobile: "2.5rem", laptop: "1rem" }}
+        px={{ mobile: "1rem", laptop: "1rem" }}
         py={{ mobile: "2rem", laptop: "5rem" }}
         alignSelf="center"
       >
@@ -90,7 +90,7 @@ export default function Home() {
       </Box>
       <Box
         component="section"
-        px={{ mobile: "2.5rem", laptop: "1rem" }}
+        px={{ mobile: "1rem", laptop: "1rem" }}
         py={{ mobile: "2rem", laptop: "5rem" }}
         alignSelf="center"
       >
@@ -103,7 +103,7 @@ export default function Home() {
       </Box>
       <Box
         component="section"
-        px={{ mobile: "2.5rem", laptop: "1rem" }}
+        px={{ mobile: "1rem", laptop: "1rem" }}
         py={{ mobile: "2rem", laptop: "5rem" }}
         alignSelf="center"
       >

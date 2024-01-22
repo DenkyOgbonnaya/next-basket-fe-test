@@ -66,7 +66,7 @@ export default function SavedIndicator() {
           aria-describedby="modal-modal-description"
           sx={{ maxWidth: "700px", overflow: "scroll" }}
         >
-          <Box bgcolor="background.default" p="2rem">
+          <Box bgcolor="background.default" p={{mobile:"1rem", laptop:"2rem"}}>
             <Box
               sx={{
                 display: "flex",

@@ -59,7 +59,7 @@ export default function NavBar() {
           bgcolor: "background.default",
           boxShadow: "none",
           height: "3.625rem",
-          px: { mobile: "2.19rem", laptop: "2.38rem" },
+          px: { mobile: "1rem", laptop: "2.38rem" },
         }}
       >
         <Container

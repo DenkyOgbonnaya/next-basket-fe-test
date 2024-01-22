@@ -23,8 +23,8 @@ export default function Cart() {
     dispatch(decreaseQty(item.productId));
   };
   return (
-    <Box>
-      <Box>
+
+      <Box display="flex" flexDirection="column" gap="0.62rem">
         {cart.map((item) => (
           <CartItemCard
             item={item}
@@ -34,7 +34,7 @@ export default function Cart() {
             onIncQty={handleIncQty}
           />
         ))}
-      </Box>
+     
     </Box>
   );
 }

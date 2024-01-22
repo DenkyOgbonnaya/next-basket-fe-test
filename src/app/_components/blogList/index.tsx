@@ -9,7 +9,7 @@ interface Props {
 export default function BlogList({ blogs }: Props) {
     
   return (
-    <Box display="grid" gridTemplateRows="2" height="35rem" gridTemplateColumns="repeat(12, 1fr)" gap="0.94rem">
+    <Box display="grid" gridTemplateRows="2" height={{mobile:"fit-content", laptop:"35rem"}} gridTemplateColumns="repeat(12, 1fr)" gap="0.94rem">
       <Box gridColumn={{mobile:"span 12", tablet:"span 4"}}  gridRow="span 2">
         <BlogCard blog={blogs[0]} />
       </Box>
