@@ -35,14 +35,15 @@ export default function Home() {
   ];
   return (
     <Container
-      maxWidth="xl"
+      maxWidth={false}
       sx={{
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "background.paper",
+        backgroundColor: "background.default",
         height: "100dvh",
         padding: "0px",
-        gap: "5rem",
+        maxWidth:{mobile:"100%", laptop:"xl"},
+        overflowX:'hidden'
       }}
     >
       <Stack useFlexGap gap="0.75rem">
@@ -54,53 +55,70 @@ export default function Home() {
         px={{ mobile: "2.5rem", laptop: "9.19rem" }}
         py={{ mobile: "2rem", laptop: "5rem" }}
       >
-        <BlogList blogs={blogs} />
+        <Container
+          maxWidth={false}
+          sx={{ maxWidth: { mobile: "100%", laptop: "100%" } }}
+        >
+          <BlogList blogs={blogs} />
+        </Container>
       </Box>
       <Box
         component="section"
         px={{ mobile: "2.5rem", laptop: "1rem" }}
         py={{ mobile: "2rem", laptop: "5rem" }}
-        maxWidth={{ mobile: "100%", laptop: "75%" }}
         alignSelf="center"
       >
-        <FeaturedProducts />
+        <Container
+          maxWidth={false}
+          sx={{ maxWidth: { mobile: "100%", laptop: "75%" } }}
+        >
+          <FeaturedProducts />
+        </Container>
       </Box>
       <Box
         component="section"
         px={{ mobile: "2.5rem", laptop: "1rem" }}
         py={{ mobile: "2rem", laptop: "5rem" }}
-        maxWidth={{ mobile: "100%", laptop: "75%" }}
         alignSelf="center"
       >
-        <HowItWorks />
+        <Container
+          maxWidth={false}
+          sx={{ maxWidth: { mobile: "100%", laptop: "75%" } }}
+        >
+          <HowItWorks />
+        </Container>
       </Box>
       <Box
         component="section"
         px={{ mobile: "2.5rem", laptop: "1rem" }}
         py={{ mobile: "2rem", laptop: "5rem" }}
-        maxWidth={{ mobile: "100%", laptop: "75%" }}
         alignSelf="center"
       >
-        <Posts />
+        <Container
+          maxWidth={false}
+          sx={{ maxWidth: { mobile: "100%", laptop: "75%" } }}
+        >
+          <Posts />
+        </Container>
       </Box>
       <Box
         component="section"
         px={{ mobile: "2.5rem", laptop: "1rem" }}
         py={{ mobile: "2rem", laptop: "5rem" }}
-        maxWidth={{ mobile: "100%", laptop: "75%" }}
         alignSelf="center"
       >
-        <ClientSuccess />
+        <Container
+          maxWidth={false}
+          sx={{ maxWidth: { mobile: "100%", laptop: "75%" } }}
+        >
+          <ClientSuccess />
+        </Container>
       </Box>
       <Box
         component="section"
-        px={{ mobile: "2.5rem", laptop: "1rem" }}
-        maxWidth={{ mobile: "100%", laptop: "75%" }}
-        py={{ mobile: "2rem", laptop: "5rem" }}
-        alignSelf="center"
-        bgcolor="green"
+        bgcolor="background.default"
       >
-        <CallToAction />
+         <CallToAction />
       </Box>
       <Footer />
     </Container>

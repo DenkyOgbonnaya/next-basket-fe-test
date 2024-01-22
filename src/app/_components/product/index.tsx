@@ -18,7 +18,7 @@ export default function Product({ product, onClick }: Props) {
   return (
     <Card
       component="article"
-      sx={{ width: { mobile: "100%", laptop: "100%" }, boxShadow: "none" }}
+      sx={{ width: { mobile: "100%", laptop: "100%" }, boxShadow: "none", bgcolor:"background.default" }}
       onClick={handleProductClick}
     >
       <CardMedia

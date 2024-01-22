@@ -11,7 +11,7 @@ export default function CallToAction() {
       position="relative"
       alignItems="center"
       gap="3.5rem"
-      bgcolor="red"
+      width="100%"
     >
       <Box
         sx={{
@@ -20,6 +20,7 @@ export default function CallToAction() {
           left: 0,
           right: 0,
           bottom: 0,
+          // width: '100%',
           backgroundImage: `url(/images/call-to-action-bg.png)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -32,9 +33,10 @@ export default function CallToAction() {
         gap="1.88rem"
         textAlign="center"
         zIndex={5}
-        maxWidth="50%"
+        maxWidth={{mobile:"100%", laptop:"50%"}}
         paddingTop="10rem"
         paddingBottom="7rem"
+        px={{mobile:"2rem", laptop:"0px"}}
       >
         <Typography
           variant="text-sm"
@@ -46,7 +48,7 @@ export default function CallToAction() {
           Designing Better Experience
         </Typography>
         <Typography
-          variant="text-xl"
+          variant="text-2xl"
           color="text.primary"
           fontWeight="700"
           lineHeight="3.125rem"
