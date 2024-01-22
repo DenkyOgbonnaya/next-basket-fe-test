@@ -21,6 +21,7 @@ export default function Product({ product, onClick }: Props) {
       component="article"
       sx={{
         width: { mobile: "100%", laptop: "100%" },
+        minHeight:"100%",
         boxShadow: "none",
         bgcolor: "background.default",
         cursor: 'pointer',

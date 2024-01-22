@@ -5,8 +5,12 @@ import { Box, Container, Stack } from "@mui/system";
 import { Typography } from "@mui/material";
 import TabPanel from "@/components/tabPanel";
 import Image from "next/image";
+import { IProduct } from "@/types/product.type";
 
-export default function ProjectInformation() {
+interface Props {
+  product:IProduct
+}
+export default function ProjectInformation({product}:Props) {
   const [value, setValue] = useState("Description");
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -133,7 +137,7 @@ export default function ProjectInformation() {
                 letterSpacing="0.00625rem"
                 color="text.primary"
               >
-                the quick fox jumps over
+                {product.title}
               </Typography>
 
               <Typography
@@ -144,9 +148,7 @@ export default function ProjectInformation() {
                 color="text.secondary"
                 component="p"
               >
-                Met minim Mollie non desert Alamo est sit cliquey dolor do met
-                sent. RELIT official consequent door ENIM RELIT Mollie.
-                Excitation venial consequent sent nostrum met.
+                {product.description}
               </Typography>
 
               <Typography
@@ -159,9 +161,7 @@ export default function ProjectInformation() {
                 borderLeft="2px solid #23856D"
                 paddingLeft="1rem"
               >
-                Met minim Mollie non desert Alamo est sit cliquey dolor do met
-                sent. RELIT official consequent door ENIM RELIT Mollie.
-                Excitation venial consequent sent nostrum met.
+                {product.description}
               </Typography>
 
               <Typography
@@ -172,9 +172,7 @@ export default function ProjectInformation() {
                 color="text.secondary"
                 component="p"
               >
-                Met minim Mollie non desert Alamo est sit cliquey dolor do met
-                sent. RELIT official consequent door ENIM RELIT Mollie.
-                Excitation venial consequent sent nostrum met.
+                {product.description}
               </Typography>
             </Stack>
             <Box
@@ -182,8 +180,9 @@ export default function ProjectInformation() {
               height="23.25rem"
               flex={1}
               width={{ mobile: "350px", laptop: "38%" }}
+              sx={{objectFit:"cover"}}
             >
-              <Image src="/images/product-cover.png" fill alt="" />
+              <Image src={product.thumbnail} fill alt="thumbnail" style={{objectFit:'cover'}} />
             </Box>
           </Box>
         </TabPanel>

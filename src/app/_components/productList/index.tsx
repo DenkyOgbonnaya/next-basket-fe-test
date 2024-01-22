@@ -8,11 +8,12 @@ interface Props {
 }
 export default function ProductList({products, onClick}:Props) {
   return (
-    <Box display="flex" columnGap="1.88rem" rowGap="0.94rem" flexWrap="wrap">
+    <Box display="flex" columnGap="1.88rem" justifyItems="stretch" rowGap="0.94rem" flexWrap="wrap">
       {products.map((product) => (
         <Box
           key={product.id}
           width={{ mobile: "100%", tablet: "30%", laptop: "17%" }}
+          alignSelf="stretch"
         >
           <Product product={product} onClick={onClick} />
         </Box>

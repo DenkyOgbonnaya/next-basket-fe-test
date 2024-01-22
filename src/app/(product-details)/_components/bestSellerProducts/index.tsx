@@ -1,104 +1,20 @@
 import ProductList from "@/app/_components/productList";
+import { useGetProductsQuery } from "@/services/product.service";
 import { IProduct } from "@/types/product.type";
-import { Typography } from "@mui/material";
+import { Skeleton, Typography } from "@mui/material";
 import { Box, Stack, Container } from "@mui/system";
+import { useRouter } from "next/navigation";
 
 export default function BestSellerProducts() {
-  const products: IProduct[] = [
-    {
-      id: 1,
-      title: "iPhone 9",
-      description: "An apple mobile which is nothing like apple",
-      price: 549,
-      discountPercentage: 12.96,
-      rating: 4.69,
-      stock: 94,
-      brand: "Apple",
-      category: "smartphones",
-      thumbnail: "/images/card-cover-5.png",
-      images: ["...", "...", "..."],
-    },
-    {
-      id: 2,
-      title: "iPhone 9",
-      description: "An apple mobile which is nothing like apple",
-      price: 549,
-      discountPercentage: 12.96,
-      rating: 4.69,
-      stock: 94,
-      brand: "Apple",
-      category: "smartphones",
-      thumbnail: "/images/card-cover-5.png",
-      images: ["...", "...", "..."],
-    },
-    {
-      id: 3,
-      title: "iPhone 9",
-      description: "An apple mobile which is nothing like apple",
-      price: 549,
-      discountPercentage: 12.96,
-      rating: 4.69,
-      stock: 94,
-      brand: "Apple",
-      category: "smartphones",
-      thumbnail: "/images/card-cover-5.png",
-      images: ["...", "...", "..."],
-    },
-    {
-      id: 4,
-      title: "iPhone 9",
-      description: "An apple mobile which is nothing like apple",
-      price: 549,
-      discountPercentage: 12.96,
-      rating: 4.69,
-      stock: 94,
-      brand: "Apple",
-      category: "smartphones",
-      thumbnail: "/images/card-cover-5.png",
-      images: ["...", "...", "..."],
-    },
-    {
-      id: 5,
-      title: "iPhone 9",
-      description: "An apple mobile which is nothing like apple",
-      price: 549,
-      discountPercentage: 12.96,
-      rating: 4.69,
-      stock: 94,
-      brand: "Apple",
-      category: "smartphones",
-      thumbnail: "/images/card-cover-5.png",
-      images: ["...", "...", "..."],
-    },
-    {
-      id: 5,
-      title: "iPhone 9",
-      description: "An apple mobile which is nothing like apple",
-      price: 549,
-      discountPercentage: 12.96,
-      rating: 4.69,
-      stock: 94,
-      brand: "Apple",
-      category: "smartphones",
-      thumbnail: "/images/card-cover-5.png",
-      images: ["...", "...", "..."],
-    },
-    {
-      id: 6,
-      title: "iPhone 9",
-      description: "An apple mobile which is nothing like apple",
-      price: 549,
-      discountPercentage: 12.96,
-      rating: 4.69,
-      stock: 94,
-      brand: "Apple",
-      category: "smartphones",
-      thumbnail: "/images/card-cover-5.png",
-      images: ["...", "...", "..."],
-    },
-  ];
+  const { data, isLoading } = useGetProductsQuery(
+    {skip:0, limit:10}
+  );
+  const router = useRouter()
 
-  const handleProductClick = (product: IProduct) => {};
+
+  const handleProductClick = (product: IProduct) => {
+    router.push(`/${product.id}`)
+  };
   return (
     <Box component="section" bgcolor="background.paper" py="3rem">
       <Container
@@ -130,7 +46,33 @@ export default function BestSellerProducts() {
             BESTSELLER PRODUCTS
           </Typography>
         </Stack>
-        <ProductList products={products} onClick={handleProductClick} />
+        {isLoading ? (
+        <Box
+          display="flex"
+          columnGap="1rem"
+          rowGap="0.94rem"
+          flexWrap="wrap"
+          bgcolor="background.default"
+        >
+          {[1, 3, 4, 5, 6].map((item) => (
+            <Box
+              key={item}
+              width={{ mobile: "100%", tablet: "30%", laptop: "17%" }}
+            >
+              <Stack useFlexGap gap="0.3rem">
+                <Skeleton variant="rectangular" animation="wave" height="200px" width="200px" />
+                <Skeleton variant="text" height="20px" width="100px" />
+                <Skeleton variant="text" height="20px" width="50px" />
+              </Stack>
+            </Box>
+          ))}
+        </Box>
+      ) : (
+        <ProductList
+          products={data?.products || []}
+          onClick={handleProductClick}
+        />
+      )}
       </Container>
     </Box>
   );

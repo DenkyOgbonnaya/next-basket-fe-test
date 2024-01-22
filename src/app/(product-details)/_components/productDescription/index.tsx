@@ -10,23 +10,22 @@ import {
 import { Amount } from "@/components";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { Button, Icon, IconButton, Typography } from "@mui/material";
-import { Box, fontWeight, letterSpacing, Stack, Container } from "@mui/system";
+import { Button, IconButton, Typography } from "@mui/material";
+import { Box, Stack, Container } from "@mui/system";
 import Image from "next/image";
 import { useRef, useState } from "react";
+import { IProduct } from "@/types/product.type";
 
-export default function ProductDescription() {
+interface Props {
+  product:IProduct
+}
+export default function ProductDescription({product}:Props) {
   const [selectedColor, setSelectedColor] = useState("");
   const [active, setActive] = useState(0);
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const scrollAmount = 500;
 
-  const gridImages = [
-    "/images/client-success-1.png",
-    "/images/client-success-2.png",
-    "/images/client-success-3.png",
-    "/images/client-success-4.png",
-  ];
+  
   const colorVariations = [
     {
       name: "Blue",
@@ -57,7 +56,7 @@ export default function ProductDescription() {
     const container = sliderRef.current;
     if (container) container.scrollLeft += scrollAmount;
 
-    if (active < gridImages.length) -1;
+    if (active < product.images.length) -1;
     setActive((a) => a + 1);
   };
   const handlePrev = () => {
@@ -107,12 +106,13 @@ export default function ProductDescription() {
             }}
             gap="0.5rem"
           >
-            {gridImages.map((img, index) => (
+            {product.images.map((img, index) => (
               <Box
                 key={index}
                 position="relative"
                 height={{ mobile: "15rem", laptop: "28.125rem" }}
                 minWidth={{ mobile: "350px", laptop: "100%" }}
+                sx={{objectFit:"cover"}}
               >
                 <Image src={img} fill alt="" style={{ objectFit: "cover" }} />
               </Box>
@@ -132,7 +132,7 @@ export default function ProductDescription() {
           </IconButton>
 
           <Box display="flex" gap="1.19rem" flexWrap="wrap">
-            {gridImages.map((img, index) => (
+            {product.images.map((img, index) => (
               <Box
                 key={index}
                 position="relative"
@@ -144,6 +144,7 @@ export default function ProductDescription() {
                   transition: "all",
                   transitionDuration: "0.5s",
                   transitionTimingFunction: "ease-in-out",
+                  objectFit:"cover"
                 }}
               >
                 <Image src={img} fill alt="" style={{ objectFit: "cover" }} />
@@ -168,13 +169,13 @@ export default function ProductDescription() {
             letterSpacing="0.0125rem"
             color="text.primary"
           >
-            Floating Phone
+            {product.title}
           </Typography>
           <Stack direction="row" alignItems="center" useFlexGap gap="0.62rem">
             <Stack direction="row" alignItems="center">
               {[1, 2, 3, 4, 5].map((item) => (
                 <Box component="span" key={item}>
-                  {item <= 4 ? <StarredIcon /> : <UnStarredIcon />}
+                  {item <= product.rating ? <StarredIcon /> : <UnStarredIcon />}
                 </Box>
               ))}
             </Stack>
@@ -185,7 +186,7 @@ export default function ProductDescription() {
               letterSpacing="0.0125rem"
               color="text.secondary"
             >
-              10 Reviews
+              {product.rating} Reviews
             </Typography>
           </Stack>
           <Typography
@@ -195,7 +196,7 @@ export default function ProductDescription() {
             letterSpacing="0.00625rem"
             color="text.primary"
           >
-            <Amount amount={50000} />
+            <Amount amount={product.price} />
           </Typography>
 
           <Stack direction="row" alignItems="center" gap="0.31rem">
@@ -216,7 +217,7 @@ export default function ProductDescription() {
               letterSpacing="0.0125rem"
               color="primary"
             >
-              In Stock
+            {product.stock > 0 ? "In Stock" : "Out of Stock"}
             </Typography>
           </Stack>
           <Typography
@@ -228,9 +229,7 @@ export default function ProductDescription() {
             component="p"
             display={{mobile:"block", laptop:"none"}}
           >
-            Met minim Mollie non desert Alamo est sit cliquey dolor do met sent.
-            RELIT official consequent door ENIM RELIT Mollie. Excitation venial
-            consequent sent nostrum met.
+            {product.description}
           </Typography>
 
           <Box
